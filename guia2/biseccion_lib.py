@@ -21,7 +21,7 @@ def biseccion(f, a, b, tol, max_iter):
     n = 1
     while n <= max_iter:
         c = (a+b)/2
-        print(f"Iteracion {n}, a:{a}, b:{b}, c:{c}, (b-a)/2 = {(b-a)/2}, f(c):{f(c)}")
+        print(f"Iteracion {n}, a:{a}, b:{b}, c:{c}, f(c):{f(c)}, (b-a)/2 = {(b-a)/2}")
         if f(c) == 0 or (b-a)/2 < tol:
             print(f"Resultado final: {c}")
             break
@@ -42,7 +42,7 @@ def biseccion_error_absoluto_anterior(f, a, b, tol, max_iter):
     
     while n <= max_iter:
         c = (a+b)/2
-        print(f"Iteracion {n}, a:{a}, b:{b}, c:{c}, |Pn-Pn-1| = {'-' if c_anterior is None else abs(c-c_anterior)}")
+        print(f"Iteracion {n}, a:{a}, b:{b}, c:{c}, f(c):{f(c)}, |Pn-Pn-1| = {'-' if c_anterior is None else abs(c-c_anterior)}")
         if f(c) == 0 or ((c_anterior is not None) and abs(c-c_anterior) < tol):
             print(f"Resultado final: {c}")
             break
@@ -65,7 +65,7 @@ def biseccion_error_relativo(f, a, b, tol, max_iter):
     while n <= max_iter:
         c = (a+b)/2
         error_relativo = None if c_anterior is None else abs(c-c_anterior)/abs(c)
-        print(f"Iteracion {n}, a:{a}, b:{b}, c:{c}, |Pn-Pn-1|/|Pn| = {'-' if error_relativo is None else error_relativo}")
+        print(f"Iteracion {n}, a:{a}, b:{b}, c:{c}, f(c):{f(c)}, |Pn-Pn-1|/|Pn| = {'-' if error_relativo is None else error_relativo}")
         if f(c) == 0 or ((error_relativo is not None) and error_relativo < tol):
             print(f"Resultado final: {c}")
             break
