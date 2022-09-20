@@ -4,20 +4,23 @@ def sign(x):
         return 1
     else:
         return -1
-    
-### Dado los extremos del intervalo y la tolerancia buscada
-### se calcula la cantidad de iteraciones maximas necesarias
-### para el algoritmo de bisección
+
 def max_iteraciones_biseccion(a,b,tol):
+    """
+    Dado los extremos del intervalo y la tolerancia buscada
+    se calcula la cantidad de iteraciones maximas necesarias
+    para el algoritmo de bisección
+    """
     return math.ceil( (math.log(b-a)-math.log(tol))/math.log(2))
 
-
-### Metodo de bisección clásico (criterio de corte (b-a)/2 < tol)
-### Precondiciones:
-### - f continua en el intervalo cerrado [a,b]
-### - f(a)*f(b)<0
-### Ejecuta el metodo de bisección con todos sus pasos intermedios
 def biseccion(f, a, b, tol, max_iter):
+    """
+    Metodo de bisección clásico (criterio de corte (b-a)/2 < tol)
+    Precondiciones:
+    - f continua en el intervalo cerrado [a,b]
+    - f(a)*f(b)<0
+    Ejecuta el metodo de bisección con todos sus pasos intermedios
+    """
     n = 1
     while n <= max_iter:
         c = (a+b)/2
@@ -30,13 +33,15 @@ def biseccion(f, a, b, tol, max_iter):
             a = c
         else:
             b = c
-            
-### Metodo de bisección con criterio de corte |Pn - Pn-1| < TOL
-### Precondiciones:
-### - f continua en el intervalo cerrado [a,b]
-### - f(a)*f(b)<0
-### Ejecuta el metodo de bisección con todos sus pasos intermedios
+
 def biseccion_error_absoluto_anterior(f, a, b, tol, max_iter):
+    """            
+    Metodo de bisección con criterio de corte |Pn - Pn-1| < TOL
+    Precondiciones:
+    - f continua en el intervalo cerrado [a,b]
+    - f(a)*f(b)<0
+    Ejecuta el metodo de bisección con todos sus pasos intermedios
+    """
     n = 1
     c_anterior = None
     
@@ -53,12 +58,15 @@ def biseccion_error_absoluto_anterior(f, a, b, tol, max_iter):
         else:
             b = c
             
-### Metodo de bisección con criterio de corte |Pn - Pn-1|/|Pn| < TOL
-### Precondiciones:
-### - f continua en el intervalo cerrado [a,b]
-### - f(a)*f(b)<0
-### Ejecuta el metodo de bisección con todos sus pasos intermedios
+
 def biseccion_error_relativo(f, a, b, tol, max_iter):
+    """
+    Metodo de bisección con criterio de corte |Pn - Pn-1|/|Pn| < TOL
+    Precondiciones:
+    - f continua en el intervalo cerrado [a,b]
+    - f(a)*f(b)<0
+    Ejecuta el metodo de bisección con todos sus pasos intermedios
+    """
     n = 1
     c_anterior = None
     
@@ -77,12 +85,15 @@ def biseccion_error_relativo(f, a, b, tol, max_iter):
             b = c
 
             
-### Metodo de bisección con criterio de corte |f(Pn)| < TOL
-### Precondiciones:
-### - f continua en el intervalo cerrado [a,b]
-### - f(a)*f(b)<0
-### Ejecuta el metodo de bisección con todos sus pasos intermedios
+
 def biseccion_error_evaluado(f, a, b, tol, max_iter):
+    """
+    Metodo de bisección con criterio de corte |f(Pn)| < TOL
+    Precondiciones:
+    - f continua en el intervalo cerrado [a,b]
+    - f(a)*f(b)<0
+    Ejecuta el metodo de bisección con todos sus pasos intermedios
+    """
     n = 1
     while n <= max_iter:
         c = (a+b)/2
